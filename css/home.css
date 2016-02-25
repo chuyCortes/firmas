@@ -1,0 +1,39 @@
+/*
+	Estilo home 
+	-ccortes- DTI
+*/
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+body{
+	background-color: #9CAFB7;
+}
+.contenedor{
+	margin:0 auto;
+	border:2px solid #3B8EA5;
+	background-color: white;
+	width: 1024px;
+	height:100vh;
+}
+#Menu{
+	width: 100%;
+	background-color:#4281A4;
+	height:45px;
+	padding-top:15px;
+	padding-left: 20%;
+}
+#Menu li {
+	color: white;
+	text-decoration: none;
+	display:inline;
+	margin:0 5%;	
+}
+#Menu li:hover{
+	border-bottom:1px solid #1B2021;
+}
+.titulos
+{
+	
+}
