@@ -12,7 +12,7 @@ body{
 }
 .contenedor{
 	margin:0 auto;
-	border:2px solid #3B8EA5;
+	border:2px solid #4281A4;
 	background-color: white;
 	width: 1024px;
 	height:100vh;
@@ -24,16 +24,7 @@ body{
 	padding-top:15px;
 	padding-left: 20%;
 }
-#Menu li {
-	color: white;
-	text-decoration: none;
-	display:inline;
-	margin:0 5%;	
-}
-#Menu li:hover{
-	border-bottom:1px solid #1B2021;
-}
-.titulos
+#titulo
 {
-	
+	margin-left:30%;	
 }

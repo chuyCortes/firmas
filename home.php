@@ -12,14 +12,17 @@
 <body>
 	<div class="contenedor">
 		<head>
-			<ul id="Menu">
-				<li>Agregar nueva firma</li>
-				<li>Buscar firma</li>
-				<li>Ver todas las firmas</li>
-			</ul>
+			<div id="Menu">
+				
+			</div>
 		</head>
 		<main>
-			<h1 class="titulos">Creador</h1>	
+			<h1 id="titulo">Sistema de Firmas DTI</h1>
+			<table>
+				<tr>
+					
+				</tr>
+			</table>	
 		</main>
 	</div>
 
