@@ -28,7 +28,7 @@
 	    }
 
 	    public function sql(){
-	    	$result = $this->_db->query("select * from  datos_firmas;"); 
+	    	$result = $this->_db->query("select * from  datos_firmas limit 5;"); 
 	    	
 	    	while ($fila = mysqli_fetch_array($result)) 
 	    	{
@@ -40,8 +40,9 @@
     			echo "<td>".utf8_encode($fila["puesto"])."</td>";
     			echo "<td>".utf8_encode($fila["ext"])."</td>";
     			echo "<td>".utf8_encode($fila["tel"])."</td>";
+    			echo "<td><a onclick=\"funcionphp(".$fila['id_firma'].");\"class=\"icon-user\"></a></td>";
     			echo "<td><div class=\"icon-cog\"></div></td>";
-    			echo "<td><div class=\"icon-user-delete\"></div></td>";
+    			echo "<td><a id='".$fila['id_firma']."' class=\"icon-user-delete  delete\"></a></td>";
     			echo "</tr>";		
 			}
 	    }
