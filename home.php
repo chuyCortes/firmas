@@ -18,11 +18,11 @@
 		</head>
 		<main>
 			<h1 id="titulo">Sistema de Firmas DTI</h1>
-			<table>
-				<tr>
-					
-				</tr>
-			</table>	
+			<?php
+				include 'core/querys.php';
+				$varQuery = new Querys();
+				$var= $varQuery->sql();
+			?>	
 		</main>
 	</div>
 

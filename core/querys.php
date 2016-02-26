@@ -18,26 +18,14 @@
          	return $row;
          	$this->_db->close(); 
 	    } 
-	    public function sql($query){
-	    	$queryProcess = $this->_db->query($query); 
-	    	if($queryProcess==true){
-	            if($queryProcess->num_rows>1){
-	                while($row = $queryProcess->fetch_object()) {
-	                   $resultSet[]=$row;
-	                }
-	            }elseif($queryProcess->num_rows==1){
-	                if($row = $queryProcess->fetch_object()) {
-	                    $resultSet=$row;
-	                }
-	            }else{
-	                $resultSet=true;
-	            }
-	        }else{
-	            $resultSet=false;
-	        }
-	         
-	        return $resultSet;
-    	}
+	    public function sql(){
+	    	$result = $this->_db->query("select * from  datos_firmas;"); 
+	    	
+	    	while ($fila = mysqli_fetch_array($result)) 
+	    	{
+    			printf ("ID: %s  Área: %s Departamento: %s Nombre Firma: %s Puesto: %s ext: %s Telefono: %s<br/>", $fila["id_firma"], $fila["area"], $fila["departamento"], $fila["nombre_firma"], $fila["puesto"], $fila["ext"], $fila["tel"]);		
+			}
+	    }
 	    
 	}
 
