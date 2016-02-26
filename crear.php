@@ -1,3 +1,7 @@
+<!--
+	php crea firma
+	-ccortes- 
+ -->
 <?php
 include 'core/querys.php';
 $varQuery = new Querys();
