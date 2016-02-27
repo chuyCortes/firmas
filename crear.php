@@ -20,6 +20,10 @@
 		<main>
 			<h1 id="titulo">Firmas DTI</h1>
 			<?php
+			
+			echo $_GET['ids'];
+			
+
 			include 'core/querys.php';
 			$varQuery = new Querys();
 

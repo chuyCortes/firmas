@@ -40,7 +40,7 @@
     			echo "<td>".utf8_encode($fila["puesto"])."</td>";
     			echo "<td>".utf8_encode($fila["ext"])."</td>";
     			echo "<td>".utf8_encode($fila["tel"])."</td>";
-    			echo "<td><a onclick=\"funcionphp(".$fila['id_firma'].");\"class=\"icon-user\"></a></td>";
+    			echo "<td><a onclick=\"funcionphp(".$fila['id_firma'].");\" class=\"icon-user\"></a></td>";
     			echo "<td><div class=\"icon-cog\"></div></td>";
     			echo "<td><a id='".$fila['id_firma']."' class=\"icon-user-delete  delete\"></a></td>";
     			echo "</tr>";		

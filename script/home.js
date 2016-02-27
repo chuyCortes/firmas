@@ -27,8 +27,7 @@ $(document).ready(function() {
 });
 
 function funcionphp(id){
-	
-	 var ids = id;
+	var ids = id;
 	alert(ids);
 	location.href="crear.php?"+ids;
 }
