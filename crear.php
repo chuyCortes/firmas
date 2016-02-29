@@ -8,26 +8,25 @@
 	<title>Creador de firmas DTI</title>
 	<link rel="stylesheet" type="text/css" href="css/home.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/css/fontello.css">
 	<script src="script/home.js"></script>
+
 </head>
 <body>
 	<div class="contenedor">
 		<head>
 			<div id="Menu">
-				
+				<a href="home.php"><div class="icon-home h"></div><a/>
 			</div>
 		</head>
 		<main>
 			<h1 id="titulo">Firmas DTI</h1>
 			<?php
-			
-			echo $_GET['ids'];
-			
-
+			$tar = $_GET["user"];
 			include 'core/querys.php';
 			$varQuery = new Querys();
 
-			$var= $varQuery->ejecutarSql();
+			$var= $varQuery->ejecutarSql($tar);
 			echo '<table style="width: 480px;height:200px; overflow: hidden; box-sizing: border-box;border-collapse: collapse;">
 					 <col style="width:37.5%">
 						<tr>

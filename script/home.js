@@ -4,8 +4,6 @@ $(document).ready(function() {
 		
 		e.preventDefault();
 		var child= $(this).parent().parent();
-		// var parent = $( ".father" ).parent( ".grandFather" );
-		// var family= child.parent(".grandFather");
 		if(confirm('¿Esta seguro que desea eliminarlo?'))
 		{
 			$.ajax({
@@ -27,7 +25,16 @@ $(document).ready(function() {
 });
 
 function funcionphp(id){
-	var ids = id;
-	alert(ids);
+	var ids = "user="+id;
 	location.href="crear.php?"+ids;
+}
+
+function agregarUser(){
+	var accion ="accion=agregar";
+	location.href="user.php?"+accion;
+}
+
+function modificarUser(){
+	var accion ="accion=modificar";
+	location.href="user.php?"+accion;
 }

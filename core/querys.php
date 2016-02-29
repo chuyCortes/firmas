@@ -20,8 +20,8 @@
 			// (col1, col2, col3, col4, col5...);
 		}
 
-		public function ejecutarSql(){
-	        $result = $this->_db->query("select * from  datos_firmas;"); 
+		public function ejecutarSql($id){
+	        $result = $this->_db->query("select * from  datos_firmas where id_firma=".$id." ;"); 
          	$row = mysqli_fetch_array($result);
          	return $row;
          	$this->_db->close(); 
@@ -32,16 +32,15 @@
 	    	
 	    	while ($fila = mysqli_fetch_array($result)) 
 	    	{
-    			// printf ("Área: %s Departamento: %s Nombre Firma: %s Puesto: %s ext: %s Telefono: %s<br/>", $fila["area"], $fila["departamento"], $fila["nombre_firma"], $fila["puesto"], $fila["ext"], $fila["tel"]);
     			echo "<tr>";
     			echo "<td>".utf8_encode($fila["area"])."</td>";
     			echo "<td>".utf8_encode($fila["departamento"])."</td>";
     			echo "<td>".utf8_encode($fila["nombre_firma"])."</td>";
     			echo "<td>".utf8_encode($fila["puesto"])."</td>";
-    			echo "<td>".utf8_encode($fila["ext"])."</td>";
     			echo "<td>".utf8_encode($fila["tel"])."</td>";
+    			echo "<td>".utf8_encode($fila["ext"])."</td>";
     			echo "<td><a onclick=\"funcionphp(".$fila['id_firma'].");\" class=\"icon-user\"></a></td>";
-    			echo "<td><div class=\"icon-cog\"></div></td>";
+    			echo "<td><a onclick=\"modificarUser();\" ><div class=\"icon-cog\"></div></a></td>";
     			echo "<td><a id='".$fila['id_firma']."' class=\"icon-user-delete  delete\"></a></td>";
     			echo "</tr>";		
 			}
