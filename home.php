@@ -19,7 +19,7 @@
 			</div>
 		</head>
 		<main>
-			<h1 id="titulo">Sistema de Firmas DTI</h1>
+			<h1 class="titulo">Sistema de Firmas DTI</h1>
 			<a onclick="agregarUser();" ><div class="button icon-user-add"/></div></a>
 			<div class="table_home" >
                 <table >

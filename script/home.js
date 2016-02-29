@@ -1,3 +1,7 @@
+/*
+	obtiene funciones para pasar variables & borrar usuarios
+	-ccortes- 
+*/
 $(document).ready(function() {
 	$('a.delete').click(function(e) {
 		var del_id = $(this).attr('id');
@@ -34,7 +38,8 @@ function agregarUser(){
 	location.href="user.php?"+accion;
 }
 
-function modificarUser(){
-	var accion ="accion=modificar";
-	location.href="user.php?"+accion;
+function modificarUser(id){
+	var accion ="accion=modificar&";
+	var user = "usuario="+id;
+	location.href="user.php?"+accion+user;
 }

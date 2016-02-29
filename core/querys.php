@@ -40,11 +40,29 @@
     			echo "<td>".utf8_encode($fila["tel"])."</td>";
     			echo "<td>".utf8_encode($fila["ext"])."</td>";
     			echo "<td><a onclick=\"funcionphp(".$fila['id_firma'].");\" class=\"icon-user\"></a></td>";
-    			echo "<td><a onclick=\"modificarUser();\" ><div class=\"icon-cog\"></div></a></td>";
+    			echo "<td><a onclick=\"modificarUser(".$fila['id_firma'].");\" ><div class=\"icon-cog\"></div></a></td>";
     			echo "<td><a id='".$fila['id_firma']."' class=\"icon-user-delete  delete\"></a></td>";
     			echo "</tr>";		
 			}
 	    }
+
+	    public function agregarUsuario($tabla , $campos){
+	    	 $query= 'INSERT INTO'.' '.$tabla.'(nombre_firma,puesto,area,departamento,tel,ext)'.' '.'VALUES ('.$campos.');';
+	    	 $result = $this->_db->query($query);
+	    	if($result)
+		    	echo "<script>console.log('jalo');</script>";
+	    	else
+		    	echo "<script>console.log('".$query."');</script>";
+	    }
+
+	    public function updateUsuario($tabla, $campos, $usuario){
+	    	$arraycampos = explode("/",$campos);
+	    	$query = 'UPDATE'.' '.$tabla.' '.'set nombre_firma='.$arraycampos[0].','.'puesto='.$arraycampos[1].','.'area='.$arraycampos[2].','.'departamento='.$arraycampos[3].','.'tel='.$arraycampos[4].','.'ext='.$arraycampos[5] .'where id_firma='.$usuario;
+	    	//echo "<script>console.log('".$query."');</script>";
+	    	$result = $this->_db->query($query);
+	    	header('Location:home.php');
+	    }
+
 	}
 
 ?>

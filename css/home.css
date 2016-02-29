@@ -25,10 +25,13 @@ body{
 	padding-top:15px;
 	padding-left: 20%;
 }
-#titulo
+.titulo
 {
-	/*margin-left:30%;*/
-	/*margin-bottom: 5%;	*/
+	color:grey;
+	text-align: center;
+    margin: auto;
+    margin-top:1%;
+    width: 100%;
 }
 .ContainerTitle
 {
@@ -51,4 +54,5 @@ body{
 
  .h{
  	margin-left: 760px;
+ 	font:20px;
  }

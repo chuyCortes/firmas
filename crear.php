@@ -20,7 +20,7 @@
 			</div>
 		</head>
 		<main>
-			<h1 id="titulo">Firmas DTI</h1>
+			<h1 class="titulo">Firmas DTI</h1>
 			<?php
 			$tar = $_GET["user"];
 			include 'core/querys.php';
