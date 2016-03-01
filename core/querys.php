@@ -46,6 +46,55 @@
 			}
 	    }
 
+	    public function paginacion(){
+	    	$contador = $this->_db->query("select * from  datos_firmas");
+	    	$num_rows = $contador->num_rows;
+	    	//echo $num_rows."<br />";
+
+	    	$tamano_pagina=2;
+	    	$pagina = isset($_GET["pagina"]);
+	    	if(!$pagina){
+	    		$inico = $tamano_pagina;
+	    		$pagina= 1;
+	    	}else{
+	    		$incio= ($pagina -1) * $tamano_pagina;
+	    	}
+	    	$total_paginas = ceil($num_rows/$tamano_pagina);
+	    	//echo $total_paginas;
+
+	    	$quer='select id_firma, nombre_firma from datos_firmas order by nombre_firma DESC limit'.' '.$inico;
+	    	//echo $quer;
+	     	$rs = $this->_db->query($quer);
+			 while ($row = mysqli_fetch_array($rs)) {
+   				echo "<tr>";
+    			// echo "<td>".utf8_encode($row["area"])."</td>";
+    			// echo "<td>".utf8_encode($row["departamento"])."</td>";
+    			echo "<td>".utf8_encode($row["nombre_firma"])."</td>";
+    			// echo "<td>".utf8_encode($row["puesto"])."</td>";
+    			// echo "<td>".utf8_encode($row["tel"])."</td>";
+    			// echo "<td>".utf8_encode($row["ext"])."</td>";
+    			// echo "<td><a onclick=\"funcionphp(".$row['id_firma'].");\" class=\"icon-user\"></a></td>";
+    			// echo "<td><a onclick=\"modificarUser(".$row['id_firma'].");\" ><div class=\"icon-cog\"></div></a></td>";
+    			// echo "<td><a id='".$row['id_firma']."' class=\"icon-user-delete  delete\"></a></td>";
+    			echo "</tr>";	
+			}
+
+			// if($total_paginas>1)
+			// {
+			// 	if($pagina != 1)
+			// 		 echo '<a href="'.$url.'?pagina='.($pagina-1).'">s</a>';
+			// 	for($i=1;$i<=$total_paginas;$i++){
+			// 		if($pagina == $i)
+			// 			echo $pagina;
+			// 		else
+			// 			echo '<a href="'.$url.'?pagina='.$i.'">'.$i.'</a>';
+			// 	}
+			// 	if($pagina != $total_paginas)
+			// 		echo '<a href="'.$url.'?pagina='.($pagina+1).'">a</a>';
+			// }
+	    }
+
+
 	    public function agregarUsuario($tabla , $campos){
 	    	 $query= 'INSERT INTO'.' '.$tabla.'(nombre_firma,puesto,area,departamento,tel,ext)'.' '.'VALUES ('.$campos.');';
 	    	 $result = $this->_db->query($query);

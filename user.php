@@ -87,12 +87,12 @@
 			<div class="login">
 			  <form method="post" action="">
 			  <?php if($m){?>
-			    <p><input type="text" name="nombre_firma" value="<?php echo $nombre_firma ?>" placeholder=""></p>
-			    <p><input type="text" name="puesto" value="<?php echo $puesto ?>" placeholder=""></p>
-			    <p><input type="text" name="area" value="<?php echo $area ?>" placeholder=""></p>
-			    <p><input type="text" name="departamento" value="<?php echo $departamento ?>" placeholder=""></p>
-			    <p><input type="text" name="tel" value="<?php echo $tel ?>" placeholder=""></p>
-			    <p><input type="text" name="ext" value="<?php echo $ext ?>" placeholder=""></p>
+			    <p><input type="text" name="nombre_firma" value="<?php echo $nombre_firma ?>" placeholder="Nombre completo"></p>
+			    <p><input type="text" name="puesto" value="<?php echo $puesto ?>" placeholder="Puesto a desempeñar"></p>
+			    <p><input type="text" name="area" value="<?php echo $area ?>" placeholder="Área"></p>
+			    <p><input type="text" name="departamento" value="<?php echo $departamento ?>" placeholder="Departamento"></p>
+			    <p><input type="text" name="tel" value="<?php echo $tel ?>" placeholder="Teléfono"></p>
+			    <p><input type="text" name="ext" value="<?php echo $ext ?>" placeholder="Extención"></p>
 			  <?php }else{?>
 			  	<p><input type="text" name="nombre_firma" value="" placeholder="<?php echo $nombre_firma ?>"></p>
 			    <p><input type="text" name="puesto" value="" placeholder="<?php echo $puesto ?>"></p>

@@ -56,7 +56,9 @@
                        
 					?>
                 </table>
-
+                <?php
+                    $var= $varQuery->paginacion() ;
+                 ?>
             </div>	
 		</main>
 	</div>
