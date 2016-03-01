@@ -20,7 +20,21 @@
 		</head>
 		<main>
 			<h1 class="titulo">Sistema de Firmas DTI</h1>
-			<a onclick="agregarUser();" ><div class="button icon-user-add"/></div></a>
+            <div class="filtro">
+                <p>filtro:</p>
+                <form>
+                    <label for="area">Área:</label>
+                    <input id="area" type="text"></input>
+                    <label for="depa">Departamento:</label>
+                    <input id="depa" type="text"></input>
+                    <label for="puesto">Puesto:</label>
+                    <input id="puesto"type="text"></input>
+                    <label for="firma">Nombre firma:</label>
+                    <input id="firma"type="text"></input>
+                    <input type="submit" name="Submit" value="buscar">
+                </form>
+            </div>
+			<div class="button"> <a onclick="agregarUser();" class="icon-user-add"/></a></div>
 			<div class="table_home" >
                 <table >
                     <tr>
@@ -52,7 +66,6 @@
                     <?php
 						include 'core/querys.php';
 						$varQuery = new Querys();
-						//$var= $varQuery->sql();
                         $var= $varQuery->paginacion() ;
 					?>
                 </table>

@@ -73,34 +73,16 @@
 	    }
 
 	    /*paginacion*/
-	    function contar_contenido()
+	    function contar_contenido($tamano)
 	    {
 	    	$contador = $this->_db->query("select * from  datos_firmas");
 	    	$num_rows = $contador->num_rows;
-	    	return $num_rows;	
+	    	$total_paginas = ceil($num_rows / $tamano);
+	    	return $total_paginas;	
 	    }
 
-      	public function paginacion(){
-	    	$tamano_pagina=10;
-	    	$pagina = $_GET["pagina"];
-	    	if(!isset($pagina)|| empty($pagina)){
-	    		$inico = 0;
-	    		$pagina= 1;
-	    	}else{
-	    		if($pagina == 1){
-	    			$inico= 0;
-	    		}
-	    		else{
-	    			$inico = $tamano_pagina * $pagina;
-	    			$inico = $inico- $tamano_pagina;
-	    		}
-
-	    	}
-	    	$total_paginas = ceil($num_rows/$tamano_pagina);
-	    	//echo $total_paginas;
-
-	    	$quer='select * from datos_firmas order by nombre_firma DESC limit'.' '.$inico;
-	    	//echo $quer;
+	    function mostrar_contenido($min, $max){
+	    	$quer='select * from datos_firmas where estado= 1 order by nombre_firma  limit'.' '.$min.','.$max;
 	     	$rs = $this->_db->query($quer);
 			 while ($row = mysqli_fetch_array($rs)) {
    				echo "<tr>";
@@ -115,20 +97,34 @@
     			echo "<td><a id='".$row['id_firma']."' class=\"icon-user-delete  delete\"></a></td>";
     			echo "</tr>";	
 			}
-			$url="home.php";
-			if($total_paginas>1)
-			{
-				if($pagina != 1)
-					 echo '<a href="'.$url.'?pagina='.($pagina-1).'">s</a>';
-				for($i=1;$i<=$total_paginas;$i++){
-					if($pagina == $i)
-						echo $pagina;
-					else
-						echo '<a href="'.$url.'?pagina='.$i.'">'.$i.'</a>';
-				}
-				if($pagina != $total_paginas)
-					echo '<a href="'.$url.'?pagina='.($pagina+1).'">a</a>';
-			}
+	    }
+
+      	public function paginacion(){
+	    	$tamano_pagina = 10;
+
+	    	$pagina = isset($_GET["pagina"]) ? $_GET["pagina"] : '';
+	    	// $pagina = $_GET["pagina"];
+	    	if(!$pagina)
+	    	{
+	    		$inicio=0;
+	    		$pagina=1;
+	    	}
+	    	else
+	    	{
+	    		$inicio = ($pagina-1)* $tamano_pagina;
+	    	}
+	    	$total_paginas =$this->contar_contenido($tamano_pagina);
+	    	$this->mostrar_contenido($inicio,$tamano_pagina);
+	    	if($total_paginas > 1)
+	    	{
+	    		for($i=1;$i<=$total_paginas;$i++){
+	    			if($pagina == $i)
+	    				echo $pagina . " ";
+	    			else
+	    				echo "<a href='home.php?pagina=" . $i."'>" . $i . "</a> ";
+	    		}
+	    	}
+	    	
 	    }
 
 
