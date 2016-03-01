@@ -52,13 +52,11 @@
                     <?php
 						include 'core/querys.php';
 						$varQuery = new Querys();
-						$var= $varQuery->sql();
-                       
+						//$var= $varQuery->sql();
+                        $var= $varQuery->paginacion() ;
 					?>
                 </table>
-                <?php
-                    $var= $varQuery->paginacion() ;
-                 ?>
+                
             </div>	
 		</main>
 	</div>
