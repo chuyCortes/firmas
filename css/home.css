@@ -67,6 +67,8 @@ body{
 }
 .filtro p {
 	color: white;
+	margin-bottom: 5px;
+	font-size: 20px;
 }
 .filtro label {
 	color: white;

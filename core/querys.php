@@ -27,8 +27,8 @@
          	$this->_db->close(); 
 	    }
 
-	    public function sql(){
-	    	$result = $this->_db->query("select * from  datos_firmas where estado = 1 limit 5 ;"); 
+	    public function sql($query){
+	    	$result = $this->_db->query("$query"); 
 	    	
 	    	while ($fila = mysqli_fetch_array($result)) 
 	    	{
@@ -75,7 +75,7 @@
 	    /*paginacion*/
 	    function contar_contenido($tamano)
 	    {
-	    	$contador = $this->_db->query("select * from  datos_firmas");
+	    	$contador = $this->_db->query("select * from  datos_firmas where estado = 1");
 	    	$num_rows = $contador->num_rows;
 	    	$total_paginas = ceil($num_rows / $tamano);
 	    	return $total_paginas;	
@@ -125,6 +125,32 @@
 	    		}
 	    	}
 	    	
+	    }
+
+	    public function filtro($columan,$nombres){
+	    	$arraycampos = explode(":",$columan);
+	    	$arraynombres = explode(":",$nombres);
+	    	
+	    	if(!empty(($arraycampos[0])))
+	    		//$where .="puesto LIKE \"%".$arraycampos[0]."%\"  ";
+	    		$where.="instr(puesto,\"". $arraycampos[0] ."\") and ";
+	    	if(!empty(($arraycampos[1])))
+	    		//$where.="departamento LIKE \"%".$arraycampos[1]."%\"  ";
+	    		$where.="instr(departamento,\"". $arraycampos[1] ."\") and ";
+	    	if(!empty(($arraycampos[2])))
+	    		//$where.="nombre_firma LIKE \"%".$arraycampos[2]."%\"  ";
+	    		$where.="instr(nombre_firma,\"". $arraycampos[2] ."\") and ";
+	    	if(!empty(($arraycampos[3])))
+	    		//$where.="area LIKE \"%".$arraycampos[3]."%\" and";
+	    		$where.="instr(area,\"". $arraycampos[3] ."\") and  ";
+	    	
+	    	if(!empty($where))
+	    		
+	    		//$where ="and ".substr($where,0,-4);
+
+	    	$sql="select * from datos_firmas where  ".$where." estado = 1";
+	    	$check = $this->sql($sql);
+	    	return $check;
 	    }
 
 

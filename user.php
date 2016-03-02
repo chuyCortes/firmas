@@ -54,7 +54,7 @@
 			$tel_post ='"'.utf8_decode($_POST["tel"]).'"';
 			$ext_post='"'.utf8_decode($_POST["ext"]).'"';
 
-			$campos = $nombre_firma_post."/".$puesto_post."/".$area_post."/".$departamento_post."/".$tel_post."/".$ext_post; 
+			$campos = $nombre_firma_post.",".$puesto_post.",".$area_post.",".$departamento_post.",".$tel_post.",".$ext_post; 
 			$valores = $varQuery->agregarUsuario("datos_firmas",$campos);
 			
 		}

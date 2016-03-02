@@ -15,27 +15,31 @@
 	<div class="contenedor">
 		<head>
 			<div id="Menu">
-				
-			</div>
+                <a href="home.php"><div class="icon-home h"></div><a/>
+            </div>
 		</head>
 		<main>
 			<h1 class="titulo">Sistema de Firmas DTI</h1>
-            <div class="filtro">
-                <p>filtro:</p>
-                <form action="busqueda.php" method="post">
-                    <label for="area">Área:</label>
-                    <input id="area"name="area" type="text"></input>
-                    <label for="depa">Departamento:</label>
-                    <input id="depa" name="depa" type="text"></input>
-                    <label for="puesto">Puesto:</label>
-                    <input id="puesto" name="puesto" type="text"></input>
-                    <label for="firma">Nombre firma:</label>
-                    <input id="firma" name="firma" type="text"></input>
-                    <input type="submit"  name="Submit" value="buscar">
-                </form>
-            </div>
-			<div class="button"> <a onclick="agregarUser();" class="icon-user-add"/></a></div>
-			<div class="table_home" >
+                <?php
+                error_reporting(0);
+                    include 'core/querys.php';
+                    $varQuery = new Querys();
+                    
+                    if($_POST["Submit"])    
+                    {
+                        $area = isset($_POST["area"]) ? $_POST["area"] : '';
+                        $depa = isset($_POST["depa"]) ? $_POST["depa"] : '';
+                        $firma = isset($_POST["firma"]) ? $_POST["firma"] : '';
+                        $puesto = isset($_POST["puesto"]) ? $_POST["puesto"] : '';
+                        $arrayValores = $puesto.":".$depa.":".$firma.":".$area;
+                        $arrayCampos = "puesto:departamento:nombre_firma:area";
+                    }
+                ?>
+                <div class="table_home" >
+                <?php
+                    if($varQuery)
+                    {
+                ?>
                 <table >
                     <tr>
                         <td>
@@ -64,13 +68,13 @@
                         </td>
                     </tr>
                     <?php
-						include 'core/querys.php';
-						$varQuery = new Querys();
-                        $var= $varQuery->paginacion() ;
-					?>
+                        echo $varQuery ->filtro($arrayValores,$arrayCampos);
+                    }else{
+                        echo "<h1>No se encuentra información</h1>";
+                    }
+                    ?>
                 </table>
-                
-            </div>	
+                </div>	
 		</main>
 	</div>
 
