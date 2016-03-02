@@ -21,17 +21,40 @@
 		<main>
 			<h1 class="titulo">Sistema de Firmas DTI</h1>
             <div class="filtro">
-                <p>filtro:</p>
+                <p>Búsqueda:</p>
                 <form action="busqueda.php" method="post">
-                    <label for="area">Área:</label>
-                    <input id="area"name="area" type="text"></input>
-                    <label for="depa">Departamento:</label>
-                    <input id="depa" name="depa" type="text"></input>
-                    <label for="puesto">Puesto:</label>
-                    <input id="puesto" name="puesto" type="text"></input>
-                    <label for="firma">Nombre firma:</label>
-                    <input id="firma" name="firma" type="text"></input>
-                    <input type="submit"  name="Submit" value="buscar">
+                    <table >
+                        <tr>
+                            <td>
+                                <label for="area">Área:</label>
+                            </td>
+                            <td>
+                                <input id="area"name="area" type="text"></input>
+                            </td>
+                            <td>
+                                <label for="depa">Departamento:</label>
+                            </td>
+                            <td>
+                                <input id="depa" name="depa" type="text"></input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="puesto">Puesto:</label>
+                            </td>
+                            <td>
+                                <input id="puesto" name="puesto" type="text"></input>
+                            </td>
+                            <td>
+                                <label for="firma">Nombre firma:</label>
+                            </td>
+                            <td>
+                                <input id="firma" name="firma" type="text"></input>
+                            </td>
+                            
+                        </tr>
+                    </table>
+                    <input type="submit" id="btn_buscar"  name="Submit" value="buscar">
                 </form>
             </div>
 			<div class="button"> <a onclick="agregarUser();" class="icon-user-add"/></a></div>
@@ -51,7 +74,7 @@
                             Puesto
                         </td>
                         <td>
-                            Telefono
+                            Teléfono
                         </td>
                         <td>
                             Extención
@@ -69,8 +92,12 @@
                         $var= $varQuery->paginacion() ;
 					?>
                 </table>
-                
-            </div>	
+            </div>
+            <div class="paginador">
+                    <?php 
+                         $var= $varQuery->num_paginacion() ;
+                    ?>
+                </div>	
 		</main>
 	</div>
 

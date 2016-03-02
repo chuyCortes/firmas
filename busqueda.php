@@ -33,50 +33,54 @@
                         $puesto = isset($_POST["puesto"]) ? $_POST["puesto"] : '';
                         $arrayValores = $puesto.":".$depa.":".$firma.":".$area;
                         $arrayCampos = "puesto:departamento:nombre_firma:area";
+
+                        if(empty($area)&& empty($depa) && empty($firma) && empty($puesto)){
+                            echo "<h1 class='titulo'>No se encontro información</h1>";
+                        }
+                        else
+                        { ?>
+                                <div class="table_home" >
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                Área
+                                            </td>
+                                            <td>
+                                               Departamento
+                                            </td>
+                                            <td>
+                                               Nombre Firma
+                                            </td>
+                                            <td>
+                                                Puesto
+                                            </td>
+                                            <td>
+                                                Telefono
+                                            </td>
+                                            <td>
+                                                Extención
+                                            </td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                        <?php $varQuery ->filtro($arrayValores,$arrayCampos)?>
+                                    </table>
+                                    </div>
+                      <?php  }
+                            
+
                     }
+                      
                 ?>
-                <div class="table_home" >
-                <?php
-                    if($varQuery)
-                    {
-                ?>
-                <table >
-                    <tr>
-                        <td>
-                            Área
-                        </td>
-                        <td>
-                           Departamento
-                        </td>
-                        <td>
-                           Nombre Firma
-                        </td>
-                        <td>
-                            Puesto
-                        </td>
-                        <td>
-                            Telefono
-                        </td>
-                        <td>
-                            Extención
-                        </td>
-                        <td>
-                        </td>
-                        <td>
-                        </td>
-                        <td>
-                        </td>
-                    </tr>
-                    <?php
-                        echo $varQuery ->filtro($arrayValores,$arrayCampos);
-                    }else{
-                        echo "<h1>No se encuentra información</h1>";
-                    }
-                    ?>
-                </table>
-                </div>	
+               
 		</main>
 	</div>
 
 </body>
 </html>
+
+ <!-- echo $varQuery ->filtro($arrayValores,$arrayCampos); -->

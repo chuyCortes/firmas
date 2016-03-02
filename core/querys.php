@@ -52,6 +52,8 @@
 		    	echo "<script>console.log('jalo');</script>";
 	    	else
 		    	echo "<script>console.log('".$query."');</script>";
+
+		    header('Location:home.php');
 	    }
 
 	    public function updateUsuario($tabla, $campos, $usuario){
@@ -115,6 +117,35 @@
 	    	}
 	    	$total_paginas =$this->contar_contenido($tamano_pagina);
 	    	$this->mostrar_contenido($inicio,$tamano_pagina);
+	    	// if($total_paginas > 1)
+	    	// {
+	    	// 	for($i=1;$i<=$total_paginas;$i++){
+	    	// 		if($pagina == $i)
+	    	// 			echo $pagina . " ";
+	    	// 		else
+	    	// 			echo "<a href='home.php?pagina=" . $i."'>" . $i . "</a> ";
+	    	// 	}
+	    	// }
+	    	
+	    }
+
+	    public function num_paginacion()
+	    {
+	    	$tamano_pagina = 10;
+
+	    	$pagina = isset($_GET["pagina"]) ? $_GET["pagina"] : '';
+	    	// $pagina = $_GET["pagina"];
+	    	if(!$pagina)
+	    	{
+	    		$inicio=0;
+	    		$pagina=1;
+	    	}
+	    	else
+	    	{
+	    		$inicio = ($pagina-1)* $tamano_pagina;
+	    	}
+	    	$total_paginas =$this->contar_contenido($tamano_pagina);
+
 	    	if($total_paginas > 1)
 	    	{
 	    		for($i=1;$i<=$total_paginas;$i++){
@@ -124,7 +155,6 @@
 	    				echo "<a href='home.php?pagina=" . $i."'>" . $i . "</a> ";
 	    		}
 	    	}
-	    	
 	    }
 
 	    public function filtro($columan,$nombres){
@@ -132,16 +162,12 @@
 	    	$arraynombres = explode(":",$nombres);
 	    	
 	    	if(!empty(($arraycampos[0])))
-	    		//$where .="puesto LIKE \"%".$arraycampos[0]."%\"  ";
 	    		$where.="instr(puesto,\"". $arraycampos[0] ."\") and ";
 	    	if(!empty(($arraycampos[1])))
-	    		//$where.="departamento LIKE \"%".$arraycampos[1]."%\"  ";
 	    		$where.="instr(departamento,\"". $arraycampos[1] ."\") and ";
 	    	if(!empty(($arraycampos[2])))
-	    		//$where.="nombre_firma LIKE \"%".$arraycampos[2]."%\"  ";
 	    		$where.="instr(nombre_firma,\"". $arraycampos[2] ."\") and ";
 	    	if(!empty(($arraycampos[3])))
-	    		//$where.="area LIKE \"%".$arraycampos[3]."%\" and";
 	    		$where.="instr(area,\"". $arraycampos[3] ."\") and  ";
 	    	
 	    	if(!empty($where))

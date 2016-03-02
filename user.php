@@ -87,21 +87,21 @@
 			<div class="login">
 			  <form method="post" action="">
 			  <?php if($m){?>
-			    <p><input type="text" name="nombre_firma" value="<?php echo $nombre_firma ?>" placeholder="Nombre completo"></p>
-			    <p><input type="text" name="puesto" value="<?php echo $puesto ?>" placeholder="Puesto a desempeñar"></p>
-			    <p><input type="text" name="area" value="<?php echo $area ?>" placeholder="Área"></p>
-			    <p><input type="text" name="departamento" value="<?php echo $departamento ?>" placeholder="Departamento"></p>
+			    <p><input type="text" name="nombre_firma" value="<?php echo $nombre_firma ?>" placeholder="Nombre completo" required></p>
+			    <p><input type="text" name="puesto" value="<?php echo $puesto ?>" placeholder="Puesto a desempeñar" required></p>
+			    <p><input type="text" name="area" value="<?php echo $area ?>" placeholder="Área" required></p>
+			    <p><input type="text" name="departamento" value="<?php echo $departamento ?>" placeholder="Departamento" required></p>
 			    <p><input type="text" name="tel" value="<?php echo $tel ?>" placeholder="Teléfono"></p>
 			    <p><input type="text" name="ext" value="<?php echo $ext ?>" placeholder="Extención"></p>
 			  <?php }else{?>
-			  	<p><input type="text" name="nombre_firma" value="" placeholder="<?php echo $nombre_firma ?>"></p>
-			    <p><input type="text" name="puesto" value="" placeholder="<?php echo $puesto ?>"></p>
-			    <p><input type="text" name="area" value="" placeholder="<?php echo $area ?>"></p>
-			    <p><input type="text" name="departamento" value="" placeholder="<?php echo $departamento ?>"></p>
+			  	<p><input type="text" name="nombre_firma" value="" placeholder="<?php echo $nombre_firma ?>" required></p>
+			    <p><input type="text" name="puesto" value="" placeholder="<?php echo $puesto ?>" required></p>
+			    <p><input type="text" name="area" value="" placeholder="<?php echo $area ?>" required></p>
+			    <p><input type="text" name="departamento" value="" placeholder="<?php echo $departamento ?>" required></p>
 			    <p><input type="text" name="tel" value="" placeholder="<?php echo $tel ?>"></p>
 			    <p><input type="text" name="ext" value="" placeholder="<?php echo $ext ?>"></p>
 			  <?php } ?>
-			    <p class="submit"><input type="submit" name="Submit" value="<?php echo $action ?>"></p>
+			    <p class="submit"><input type="submit" name="Submit" value="Guardar"></p>
 			  </form>
 			</div>	
 		</main>

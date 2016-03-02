@@ -52,7 +52,7 @@ $(document).ready(function() {
 		var userD ="userdel="+del_id;
 		
 		
-		if(confirm('¿Esta seguro que desea eliminarlo?'))
+		if(confirm('¿Está seguro que desea eliminarlo?'))
 		{
 			child.animate({ backgroundColor: "#fbc7c7" }, "fast").animate({ opacity: "hide" }, "slow");
 			location.href="remove.php?"+userD;
