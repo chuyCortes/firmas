@@ -46,7 +46,7 @@
 			}
 	    }
 	    public function agregarUsuario($tabla , $campos){
-	    	 $query= 'INSERT INTO'.' '.$tabla.'(nombre_firma,puesto,area,departamento,tel,ext)'.' '.'VALUES ('.$campos.');';
+	    	 $query= 'INSERT INTO'.' '.$tabla.'(nombre_firma,puesto,area,departamento,tel,ext,correo)'.' '.'VALUES ('.$campos.');';
 	    	 $result = $this->_db->query($query);
 	    	if($result)
 		    	echo "<script>console.log('jalo');</script>";
@@ -58,7 +58,7 @@
 
 	    public function updateUsuario($tabla, $campos, $usuario){
 	    	$arraycampos = explode("/",$campos);
-	    	$query = 'UPDATE'.' '.$tabla.' '.'set nombre_firma='.$arraycampos[0].','.'puesto='.$arraycampos[1].','.'area='.$arraycampos[2].','.'departamento='.$arraycampos[3].','.'tel='.$arraycampos[4].','.'ext='.$arraycampos[5] .'where id_firma='.$usuario;
+	    	$query = 'UPDATE'.' '.$tabla.' '.'set nombre_firma='.$arraycampos[0].','.'puesto='.$arraycampos[1].','.'area='.$arraycampos[2].','.'departamento='.$arraycampos[3].','.'tel='.$arraycampos[4].','.'ext='.$arraycampos[5] .','.'correo='.$arraycampos[6] .'where id_firma='.$usuario;
 	    	
 	    	$result = $this->_db->query($query);
 	    	header('Location:home.php');
@@ -94,6 +94,7 @@
     			echo "<td>".utf8_encode($row["puesto"])."</td>";
     			echo "<td>".utf8_encode($row["tel"])."</td>";
     			echo "<td>".utf8_encode($row["ext"])."</td>";
+    			echo "<td>".utf8_encode($row["correo"])."</td>";
     			echo "<td><a onclick=\"funcionphp(".$row['id_firma'].");\" class=\"icon-user\"></a></td>";
     			echo "<td><a onclick=\"modificarUser(".$row['id_firma'].");\" ><div class=\"icon-cog\"></div></a></td>";
     			echo "<td><a id='".$row['id_firma']."' class=\"icon-user-delete  delete\"></a></td>";
@@ -178,6 +179,53 @@
 	    	$check = $this->sql($sql);
 	    	return $check;
 	    }
+
+	  //   public function inicio_s($query){
+	  //   	$result = $this->_db->query("$query"); 
+	    	
+	  //   	while ($fila = mysqli_fetch_array($result)) 
+	  //   	{
+   //  			echo "<tr>";
+   //  			echo "<td>".utf8_encode($fila["area"])."</td>";
+   //  			echo "<td>".utf8_encode($fila["departamento"])."</td>";
+   //  			echo "<td>".utf8_encode($fila["nombre_firma"])."</td>";
+   //  			echo "<td>".utf8_encode($fila["puesto"])."</td>";
+   //  			echo "<td>".utf8_encode($fila["tel"])."</td>";
+   //  			echo "<td>".utf8_encode($fila["ext"])."</td>";
+   //  			echo "<td><a onclick=\"funcionphp(".$fila['id_firma'].");\" class=\"icon-user\"></a></td>";
+   //  			echo "<td><a onclick=\"modificarUser(".$fila['id_firma'].");\" ><div class=\"icon-cog\"></div></a></td>";
+   //  			echo "<td><a id='".$fila['id_firma']."' class=\"icon-user-delete  delete\"></a></td>";
+   //  			echo "</tr>";		
+			// }
+	  //   }
+
+	    public function inicio_secion($campos){
+	    	$arraycampos = explode(",",$campos);
+	    	$sql="SELECT d.nombre_firma, u.id_firma FROM usario u JOIN datos_firmas d on u.id_firma = d.id_firma where u.pass = ".$arraycampos[1]." AND d.correo =".$arraycampos[0]."";
+			$result = $this->_db->query($sql);
+			while ($fila = mysqli_fetch_array($result)) {
+				$varNombre=utf8_encode($fila["nombre_firma"]);
+				$varid=utf8_encode($fila["id_firma"]);
+			}
+
+			if(mysqli_num_rows($result) > 1)
+				echo "string";
+			else
+				echo "dos";
+			
+				// $_SESSION['usuario']=$varNombre;
+				// $_SESSION['clave']=$varid;
+			
+	    }
+
+
+	    public function traerfirma($correo){
+	    	$sql= "SELECT * FROM datos_firmas where estado = 1 and correo=".$correo;
+	        $result = $this->_db->query($sql); 
+         	$row = mysqli_fetch_array($result);
+         	return $row;
+	    }
+
 
 
 	}
