@@ -12,12 +12,12 @@
 		}
 
 		public function insertMas(){
-			// LOAD DATA LOCAL INFILE 'abc.csv' INTO TABLE abc
-			// FIELDS TERMINATED BY ',' 
-			// ENCLOSED BY '"' 
-			// LINES TERMINATED BY '\r\n'
-			// IGNORE 1 LINES
-			// (col1, col2, col3, col4, col5...);
+			 // LOAD DATA LOCAL INFILE 'C:/Users/jesus.cortesh/Desktop/firma.csv' INTO TABLE datos_firmas
+ 			//  FIELDS TERMINATED BY ',' 
+ 			//  ENCLOSED BY '"' 
+ 			//  LINES TERMINATED BY '\r\n'
+			 // IGNORE 1 LINES
+			 // (area,departamento,nombre_firma,puesto,ext,tel);
 		}
 
 		public function ejecutarSql($id){
@@ -57,7 +57,7 @@
 	    }
 
 	    public function updateUsuario($tabla, $campos, $usuario){
-	    	$arraycampos = explode("/",$campos);
+	    	$arraycampos = explode("°",$campos);
 	    	$query = 'UPDATE'.' '.$tabla.' '.'set nombre_firma='.$arraycampos[0].','.'puesto='.$arraycampos[1].','.'area='.$arraycampos[2].','.'departamento='.$arraycampos[3].','.'tel='.$arraycampos[4].','.'ext='.$arraycampos[5] .','.'correo='.$arraycampos[6] .'where id_firma='.$usuario;
 	    	
 	    	$result = $this->_db->query($query);
@@ -207,15 +207,16 @@
 				$varNombre=utf8_encode($fila["nombre_firma"]);
 				$varid=utf8_encode($fila["id_firma"]);
 			}
+			 return $varNombre.$varid;
+	    }
 
-			if(mysqli_num_rows($result) > 1)
-				echo "string";
-			else
-				echo "dos";
-			
-				// $_SESSION['usuario']=$varNombre;
-				// $_SESSION['clave']=$varid;
-			
+	    public function limpiar($dirty){
+				if (get_magic_quotes_gpc()) {
+					$liberate = mysql_real_escape_string(stripslashes($dirty));
+					}else{
+					$liberate = mysql_real_escape_string($dirty);
+					}
+				return $liberate;
 	    }
 
 

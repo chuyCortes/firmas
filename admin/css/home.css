@@ -115,3 +115,10 @@ body{
 	text-decoration: none;	
 	font-family: helvetica;
 }
+#cs a{
+	color: white;
+	text-decoration: none;
+	float: right;
+	margin-right: 10px;
+	font-family: helvetica;
+}

@@ -10,6 +10,7 @@
 	if($action=="modificar")
 	{
 		$usuario = $_GET["usuario"];
+		$usuario = $varQuery->limpiar($usuario); // SE AGREGO ultimo 
 		$valores = $varQuery->ejecutarSql($usuario);
 
 		$nombre_firma=utf8_encode($valores["nombre_firma"]);
@@ -23,15 +24,32 @@
 
 		if(isset($_POST['Submit']))
 		{
-			$nombre_firma_post ='"'.utf8_decode($_POST["nombre_firma"]).'"';
-			$puesto_post= '"'.utf8_decode($_POST["puesto"]).'"';
-			$area_post ='"'.utf8_decode($_POST["area"]).'"';
-			$departamento_post ='"'.utf8_decode($_POST["departamento"]).'"';
-			$tel_post ='"'.utf8_decode($_POST["tel"]).'"';
-			$ext_post='"'.utf8_decode($_POST["ext"]).'"';
-			$correo_post = '"'.utf8_decode($_POST["correo"]).'"';
-			
-			$campos = $nombre_firma_post."/".$puesto_post."/".$area_post."/".$departamento_post."/".$tel_post."/".$ext_post."/".$correo_post; 
+
+			// $nombre_firma_post ='"'.utf8_decode($_POST["nombre_firma"]).'"';
+			// $puesto_post= '"'.utf8_decode($_POST["puesto"]).'"';
+			// $area_post ='"'.utf8_decode($_POST["area"]).'"';
+			// $departamento_post ='"'.utf8_decode($_POST["departamento"]).'"';
+			// $tel_post ='"'.utf8_decode($_POST["tel"]).'"';
+			// $ext_post='"'.utf8_decode($_POST["ext"]).'"';
+			// $correo_post = '"'.utf8_decode($_POST["correo"]).'"';
+
+			$nombre_firma_post= $varQuery->limpiar(utf8_decode($_POST["nombre_firma"])); 
+			$nombre_firma_post ='"'.$nombre_firma_post.'"';
+			$puesto_post= $varQuery->limpiar(utf8_decode($_POST["puesto"])); 
+			$puesto_post ='"'.$puesto_post.'"';
+			$area_post= $varQuery->limpiar(utf8_decode($_POST["area"])); 
+			$area_post ='"'.$area_post.'"';
+			$departamento_post= $varQuery->limpiar(utf8_decode($_POST["departamento"])); 
+			$departamento_post ='"'.$departamento_post.'"';
+			$tel_post= $varQuery->limpiar(utf8_decode($_POST["tel"])); 
+			$tel_post ='"'.$tel_post.'"';
+			$ext_post= $varQuery->limpiar(utf8_decode($_POST["ext"])); 
+			$ext_post ='"'.$ext_post.'"';
+			$correo_post= $varQuery->limpiar(utf8_decode($_POST["correo"])); 
+			$correo_post ='"'.$correo_post.'"';
+
+
+			$campos = $nombre_firma_post."°".$puesto_post."°".$area_post."°".$departamento_post."°".$tel_post."°".$ext_post."°".$correo_post; 
 			$valores = $varQuery->updateUsuario("datos_firmas",$campos,$usuario);
 				
 		}
@@ -50,13 +68,28 @@
 
 		if(isset($_POST['Submit']))
 		{
-			$nombre_firma_post ='"'.utf8_decode($_POST["nombre_firma"]).'"';
-			$puesto_post= '"'.utf8_decode($_POST["puesto"]).'"';
-			$area_post ='"'.utf8_decode($_POST["area"]).'"';
-			$departamento_post ='"'.utf8_decode($_POST["departamento"]).'"';
-			$tel_post ='"'.utf8_decode($_POST["tel"]).'"';
-			$ext_post='"'.utf8_decode($_POST["ext"]).'"';
-			$correo_post='"'.utf8_decode($_POST["correo"]).'"';
+			// $nombre_firma_post ='"'.utf8_decode($_POST["nombre_firma"]).'"';
+			// $puesto_post= '"'.utf8_decode($_POST["puesto"]).'"';
+			// $area_post ='"'.utf8_decode($_POST["area"]).'"';
+			// $departamento_post ='"'.utf8_decode($_POST["departamento"]).'"';
+			// $tel_post ='"'.utf8_decode($_POST["tel"]).'"';
+			// $ext_post='"'.utf8_decode($_POST["ext"]).'"';
+			// $correo_post='"'.utf8_decode($_POST["correo"]).'"';
+
+			$nombre_firma_post= $varQuery->limpiar(utf8_decode($_POST["nombre_firma"])); 
+			$nombre_firma_post ='"'.$nombre_firma_post.'"';
+			$puesto_post= $varQuery->limpiar(utf8_decode($_POST["puesto"])); 
+			$puesto_post ='"'.$puesto_post.'"';
+			$area_post= $varQuery->limpiar(utf8_decode($_POST["area"])); 
+			$area_post ='"'.$area_post.'"';
+			$departamento_post= $varQuery->limpiar(utf8_decode($_POST["departamento"])); 
+			$departamento_post ='"'.$departamento_post.'"';
+			$tel_post= $varQuery->limpiar(utf8_decode($_POST["tel"])); 
+			$tel_post ='"'.$tel_post.'"';
+			$ext_post= $varQuery->limpiar(utf8_decode($_POST["ext"])); 
+			$ext_post ='"'.$ext_post.'"';
+			$correo_post= $varQuery->limpiar(utf8_decode($_POST["correo"])); 
+			$correo_post ='"'.$correo_post.'"';
 
 			$campos = $nombre_firma_post.",".$puesto_post.",".$area_post.",".$departamento_post.",".$tel_post.",".$ext_post.",".$correo_post; 
 			$valores = $varQuery->agregarUsuario("datos_firmas",$campos);

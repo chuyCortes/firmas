@@ -1,6 +1,18 @@
 <!-- 
 -ccortes- DTI 
 -->
+<?php 
+    session_start();
+    include 'core/querys.php';
+    $varQuery = new Querys();
+    if(empty($_SESSION['username'])) {
+        header('Location: index.php');
+        //echo "empty";
+    }
+    else{
+        
+    
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +27,7 @@
 	<div class="contenedor">
 		<head>
 			<div id="Menu">
-				
+				<div id="cs"><a href="index.php">Cerrar Sesión</a></div>
 			</div>
 		</head>
 		<main>
@@ -54,7 +66,7 @@
                             
                         </tr>
                     </table>
-                    <input type="submit" id="btn_buscar"  name="Submit" value="buscar">
+                    <input type="submit" id="btn_buscar"  name="Submit" value="Buscar">
                 </form>
             </div>
 			<div class="button"> <a onclick="agregarUser();" class="icon-user-add"/></a></div>
@@ -89,20 +101,17 @@
                         <td>
                         </td>
                     </tr>
-                    <?php
-						include 'core/querys.php';
-						$varQuery = new Querys();
-                        $var= $varQuery->paginacion() ;
-					?>
+                    <?=$var= $varQuery->paginacion() ;?>
                 </table>
             </div>
             <div class="paginador">
-                    <?php 
-                         $var= $varQuery->num_paginacion() ;
-                    ?>
+                    <?= $var= $varQuery->num_paginacion() ;?>
                 </div>	
 		</main>
 	</div>
 
 </body>
 </html>
+<?php 
+    }
+?>

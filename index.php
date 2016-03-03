@@ -7,6 +7,7 @@
 
 	include 'core/querys.php';
 	$varQuery = new Querys();
+	error_reporting(0);
 		
 
 ?>
@@ -19,7 +20,21 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="admin/css/css/fontello.css">
 	<script src="script/home.js"></script>
-
+	<style type="text/css">
+	.footer{
+		/*margin-top: 280px;*/
+		margin-left:165px;
+		font-family: helvetica;
+	}
+	.titulo{
+		
+	}
+	.info{
+		margin-top:150px;
+		margin-left:280px;
+		margin-bottom:280px;
+	}
+	</style>
 </head>
 <body>
 	<div class="contenedor">
@@ -30,7 +45,7 @@
 		</head>
 		<main>
 			<h1 class="titulo">
-				Firma
+				Firmas DTI
 			</h1>
 			
 			<?php
@@ -42,7 +57,8 @@
 			 	///
 			 	?>
 			 	<!--  -->
-			 	<table style="width: 480px;height:200px; overflow: hidden; box-sizing: border-box;border-collapse: collapse;">
+			 	<div class="info">
+			 	<table  style="width: 480px;height:200px; overflow: hidden; box-sizing: border-box;border-collapse: collapse;">
 					 <col style="width:37.5%">
 						<tr>
 							<td style="/*border:1px solid black;*/height:74.5%;padding-left:29px;padding-top:35px;">
@@ -90,12 +106,15 @@
 							</td>
 						</tr>
 				</table>
+				</div>
+				<p class="footer">Copia la firma incluyendo los logos, posteriormente pégala en la sección de Firmas de tu Outlook.</p>
+
 			 	<!--  -->
 			 <?php	
 			 	///
 			}
 			else{
-				echo "<h1>No se encontro ninguna firma</h1>";
+				echo "<h1>No se encontró ninguna firma</h1>";
 			}
 			}else{
 			?>

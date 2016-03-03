@@ -1,40 +1,14 @@
 <!--
-	php modifica y crea usuario
+	php  Log in
 	-ccortes- 
  -->
 <?php
-	 
-	session_start();
-	// if(!isset($_SESSION['usuario']))
- //   {
- //        echo "No hay ninguna sesion iniciada";
-	// 		//esto ocurre cuando la sesion caduca.   
-
- //   }
- //   else
- //   { 
- //     session_destroy();
- //       //echo "Has cerrado la sesion";
-
-	// echo "<meta content='0;URL=index.php' http-equiv='REFRESH'> </meta>";
-       
-   //}
- 
-
-	//error_reporting(0);
+	if(session_start() != NULL);
+		session_destroy(); 
+	
+	error_reporting(0);
 	include 'core/querys.php';
 	$varQuery = new Querys();
-
-		if(isset($_POST['Submit']))
-		{
-			$correo_post='"'.utf8_decode($_POST["correo"]).'"';
-			$password_post='"'.utf8_decode($_POST["password"]).'"';
-
-			$campos = $correo_post.",".$password_post; 
-			echo $valores = $varQuery->inicio_secion($campos);
-		}
-
-		 
 		
 
 ?>
@@ -53,19 +27,47 @@
 	<div class="contenedor">
 		<head>
 			<div id="Menu">
+				<a href="index.php"><div class="icon-home h"></div></a>
 			</div>
 		</head>
 		<main>
 			<h1 class="titulo">
 				Log in
 			</h1>
+			
+			<?php
+			if(isset($_POST['Submit'])){
+				$correo ='"'.$_POST["correo"].'"';
+				$contra ='"'.$_POST["contra"].'"';
+				$tar = $correo.",".$contra;
+			 	$var= $varQuery->inicio_secion($tar);
+			 	if($var)
+			 	{
+			 		session_start();
+			 		$_SESSION['username'] = $var[1];
+			 		header('Location:home.php');
+			 		//echo $_SESSION['username'];
+			 	///
+			 	?>
+			 	<!--  -->
+			 		
+			 	<!--  -->
+			 <?php	
+			 	///
+			}
+			else{
+				echo "<h1>No se tiene permisos para entrar en modo administrador</h1>";
+			}
+			}else{
+			?>
 			<div class="login">
 			  <form method="post" action="">
-			    <p><input type="text" name="correo" value="" placeholder="Correo Electrónico" ></p>
-			    <p><input type="password" name="password" value="" placeholder="Contraseña" ></p>
+			    <p><input type="text" name="correo" value="" placeholder="Correo Electrónico"required></p>
+			    <p><input type="password" name="contra" value="" placeholder="Contraseña"required></p>
 			    <p class="submit"><input type="submit" name="Submit" value="Entrar"></p>
 			  </form>
-			</div>	
+			</div>
+			<?php }?>
 		</main>
 	</div>
 
