@@ -53,13 +53,16 @@
 									</tr>
 									<tr>
 										<td style="font-size: 12px;font-family: 'Myriad Pro';color: #626262;padding-left:11px;">
-											<?php 
-												if(empty($var[6])|| $var[6] == "0")
-													echo"<small>Tel. +52(81) 8329 4040</small>";
-												else
-													echo"<small>Tel. +52(81) ".$var[6]."</small>";
+											<small>Tel. +52(81) 8329 4040</small>
+											<?php
 												if(!empty($var[5]))
-													echo"<small>, Ext: ".$var[5]."</small>";
+													echo"<small>, Ext: ".$var[5]."</small>"; 
+												if(empty($var[6])|| $var[6] == "0")
+												{
+												}
+												else{
+													echo" "."<small>, Tel. Directo: ".$var[6]."</small>";
+												}
 											?>
 											<br>
 											<small>Cd. Universitaria, C.P. 66455, San Nicolás  de los Garza</small><br>

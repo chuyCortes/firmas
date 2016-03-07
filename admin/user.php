@@ -19,6 +19,7 @@
 		$departamento=utf8_encode($valores["departamento"]);
 		$tel=utf8_encode($valores["tel"]);
 		$ext=utf8_encode($valores["ext"]);
+		$cel=utf8_encode($valores["cel"]);
 		$correo =utf8_encode($valores["correo"]);
 		$m=true;
 
@@ -45,11 +46,13 @@
 			$tel_post ='"'.$tel_post.'"';
 			$ext_post= $varQuery->limpiar(utf8_decode($_POST["ext"])); 
 			$ext_post ='"'.$ext_post.'"';
+			$cel_post= $varQuery->limpiar(utf8_decode($_POST["cel"])); 
+			$cel_post ='"'.$cel_post.'"';
 			$correo_post= $varQuery->limpiar(utf8_decode($_POST["correo"])); 
 			$correo_post ='"'.$correo_post.'"';
 
 
-			$campos = $nombre_firma_post."°".$puesto_post."°".$area_post."°".$departamento_post."°".$tel_post."°".$ext_post."°".$correo_post; 
+			$campos = $nombre_firma_post."°".$puesto_post."°".$area_post."°".$departamento_post."°".$tel_post."°".$ext_post."°".$cel_post."°".$correo_post; 
 			$valores = $varQuery->updateUsuario("datos_firmas",$campos,$usuario);
 				
 		}
@@ -63,6 +66,7 @@
 		$departamento="Departamento";
 		$tel="Teléfono";
 		$ext="Extención";
+		$cel="Celular";
 		$correo = "Correo Electrónico";
 		$m=false;
 
@@ -88,10 +92,12 @@
 			$tel_post ='"'.$tel_post.'"';
 			$ext_post= $varQuery->limpiar(utf8_decode($_POST["ext"])); 
 			$ext_post ='"'.$ext_post.'"';
+			$cel_post= $varQuery->limpiar(utf8_decode($_POST["cel"])); 
+			$cel_post ='"'.$cel_post.'"';
 			$correo_post= $varQuery->limpiar(utf8_decode($_POST["correo"])); 
 			$correo_post ='"'.$correo_post.'"';
 
-			$campos = $nombre_firma_post.",".$puesto_post.",".$area_post.",".$departamento_post.",".$tel_post.",".$ext_post.",".$correo_post; 
+			$campos = $nombre_firma_post.",".$puesto_post.",".$area_post.",".$departamento_post.",".$tel_post.",".$ext_post.",".$cel_post.",".$correo_post; 
 			$valores = $varQuery->agregarUsuario("datos_firmas",$campos);
 			
 		}
@@ -130,6 +136,7 @@
 			    <p><input type="text" name="departamento" value="<?php echo $departamento ?>" placeholder="Departamento" required></p>
 			    <p><input type="text" name="tel" value="<?php echo $tel ?>" placeholder="Teléfono"></p>
 			    <p><input type="text" name="ext" value="<?php echo $ext ?>" placeholder="Extención"></p>
+			    <p><input type="text" name="cel" value="<?php echo $cel ?>" placeholder="Celular DTI"></p>
 			    <p><input type="text" name="correo" value="<?php echo $correo ?>" placeholder="Correo Electrónico"></p>
 			  <?php }else{?>
 			  	<p><input type="text" name="nombre_firma" value="" placeholder="<?php echo $nombre_firma ?>" required></p>
@@ -138,6 +145,7 @@
 			    <p><input type="text" name="departamento" value="" placeholder="<?php echo $departamento ?>" required></p>
 			    <p><input type="text" name="tel" value="" placeholder="<?php echo $tel ?>"></p>
 			    <p><input type="text" name="ext" value="" placeholder="<?php echo $ext ?>"></p>
+			    <p><input type="text" name="cel" value="" placeholder="<?php echo $cel ?>"></p>
 			    <p><input type="text" name="correo" value="" placeholder="<?php echo $correo ?>" required></p>
 			  <?php } ?>
 			    <p class="submit"><input type="submit" name="Submit" value="Guardar"></p>

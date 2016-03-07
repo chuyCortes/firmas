@@ -12,12 +12,12 @@
 		}
 
 		public function insertMas(){
-			 // LOAD DATA LOCAL INFILE 'C:/Users/jesus.cortesh/Desktop/firma.csv' INTO TABLE datos_firmas
- 			//  FIELDS TERMINATED BY ',' 
- 			//  ENCLOSED BY '"' 
- 			//  LINES TERMINATED BY '\r\n'
-			 // IGNORE 1 LINES
-			 // (area,departamento,nombre_firma,puesto,ext,tel);
+				 // LOAD DATA LOCAL INFILE 'C:/Users/jesus.cortesh/Desktop/firma.csv' INTO TABLE datos_firmas
+	 			//  FIELDS TERMINATED BY ',' 
+	 			//  ENCLOSED BY '"' 
+	 			//  LINES TERMINATED BY '\r\n'
+				 // IGNORE 1 LINES
+				 // (area,departamento,nombre_firma,puesto,ext,tel);
 		}
 
 		public function ejecutarSql($id){
@@ -46,7 +46,7 @@
 			}
 	    }
 	    public function agregarUsuario($tabla , $campos){
-	    	 $query= 'INSERT INTO'.' '.$tabla.'(nombre_firma,puesto,area,departamento,tel,ext,correo)'.' '.'VALUES ('.$campos.');';
+	    	 $query= 'INSERT INTO'.' '.$tabla.'(nombre_firma,puesto,area,departamento,tel,ext,cel,correo)'.' '.'VALUES ('.$campos.');';
 	    	 $result = $this->_db->query($query);
 	    	if($result)
 		    	echo "<script>console.log('jalo');</script>";
@@ -58,7 +58,7 @@
 
 	    public function updateUsuario($tabla, $campos, $usuario){
 	    	$arraycampos = explode("°",$campos);
-	    	$query = 'UPDATE'.' '.$tabla.' '.'set nombre_firma='.$arraycampos[0].','.'puesto='.$arraycampos[1].','.'area='.$arraycampos[2].','.'departamento='.$arraycampos[3].','.'tel='.$arraycampos[4].','.'ext='.$arraycampos[5] .','.'correo='.$arraycampos[6] .'where id_firma='.$usuario;
+	    	$query = 'UPDATE'.' '.$tabla.' '.'set nombre_firma='.$arraycampos[0].','.'puesto='.$arraycampos[1].','.'area='.$arraycampos[2].','.'departamento='.$arraycampos[3].','.'tel='.$arraycampos[4].','.'ext='.$arraycampos[5].','.'cel='.$arraycampos[6] .','.'correo='.$arraycampos[7] .'where id_firma='.$usuario;
 	    	
 	    	$result = $this->_db->query($query);
 	    	header('Location:home.php');
@@ -94,6 +94,7 @@
     			echo "<td>".utf8_encode($row["puesto"])."</td>";
     			echo "<td>".utf8_encode($row["tel"])."</td>";
     			echo "<td>".utf8_encode($row["ext"])."</td>";
+    			echo "<td>".utf8_encode($row["cel"])."</td>";
     			echo "<td>".utf8_encode($row["correo"])."</td>";
     			echo "<td><a onclick=\"funcionphp(".$row['id_firma'].");\" class=\"icon-user\"></a></td>";
     			echo "<td><a onclick=\"modificarUser(".$row['id_firma'].");\" ><div class=\"icon-cog\"></div></a></td>";

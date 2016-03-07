@@ -220,10 +220,14 @@
 
 
 	    public function traerfirma($correo){
-	    	$sql= "SELECT * FROM datos_firmas where estado = 1 and correo=".$correo;
+	    	$sql= 'SELECT * FROM datos_firmas where estado = 1 and correo Like "%'.$correo.'%"';
 	        $result = $this->_db->query($sql); 
          	$row = mysqli_fetch_array($result);
          	return $row;
+	    }
+
+	    public function check($correo){
+
 	    }
 
 

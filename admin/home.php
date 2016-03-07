@@ -92,6 +92,9 @@
                             Extención
                         </td>
                         <td>
+                            Celular
+                        </td>
+                        <td>
                             correo
                         </td>
                         <td>
