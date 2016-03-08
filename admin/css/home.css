@@ -130,16 +130,19 @@ footer{
 		padding:5px 5px;
 		height:50px;
 		font-family: helvetica;
+
 	}
 	footer a{
 		text-decoration: none;
 		color: white;
+
 	}
 	footer p {
 	letter-spacing: 1px;
     color: white;
     text-align: right;
     float: right;
+    font-size: 14px;
 	}
 
 	#dti{

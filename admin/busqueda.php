@@ -40,7 +40,7 @@
                         }
                         else
                         { ?>
-                                <div style="margin-left: 26px; margin-top: 20px;font-family: helvetica; font-size: 25px;">Resultados de la busqueda:</div>
+                                <div style="margin-left: 26px; margin-top: 20px;font-family: helvetica; font-size: 25px;">Resultados de la búsqueda:</div>
                                 <div style="margin-top: 10px;" class="table_home" >
                                     <table>
                                         <tr>

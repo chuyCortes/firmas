@@ -102,7 +102,7 @@ input[type=text]:focus, input[type=password]:focus {
 input[type=submit] {
   padding: 0 40px;
   height: 46px;
-  font-size: 12px;
+  font-size: 14px;
   color: #fff;
   text-shadow: none;
   background: #00B87F;
