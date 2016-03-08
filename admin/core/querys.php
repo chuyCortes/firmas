@@ -17,7 +17,7 @@
 	 			//  ENCLOSED BY '"' 
 	 			//  LINES TERMINATED BY '\r\n'
 				 // IGNORE 1 LINES
-				 // (area,departamento,nombre_firma,puesto,ext,tel);
+				 // (area,departamento,nombre_firma,puesto,ext,tel,cel,correo);
 		}
 
 		public function ejecutarSql($id){
@@ -162,6 +162,30 @@
 	    public function filtro($columan,$nombres){
 	    	$arraycampos = explode(":",$columan);
 	    	$arraynombres = explode(":",$nombres);
+
+	    	$arraycampos[0] = ereg_replace("á|Á","a",$arraycampos[0]);
+	    	$arraycampos[0] = ereg_replace("é|É","e",$arraycampos[0]);
+	    	$arraycampos[0] = ereg_replace("í|Í","i",$arraycampos[0]);
+	    	$arraycampos[0] = ereg_replace("ó|Ó","o",$arraycampos[0]);
+	    	$arraycampos[0] = ereg_replace("ú|Ú","u",$arraycampos[0]);
+
+	    	$arraycampos[1] = ereg_replace("á|Á","a",$arraycampos[1]);
+	    	$arraycampos[1] = ereg_replace("é|É","e",$arraycampos[1]);
+	    	$arraycampos[1] = ereg_replace("í|Í","i",$arraycampos[1]);
+	    	$arraycampos[1] = ereg_replace("ó|Ó","o",$arraycampos[1]);
+	    	$arraycampos[1] = ereg_replace("ú|Ú","u",$arraycampos[1]);
+
+	    	$arraycampos[2] = ereg_replace("á|Á","a",$arraycampos[2]);
+	    	$arraycampos[2] = ereg_replace("é|É","e",$arraycampos[2]);
+	    	$arraycampos[2] = ereg_replace("í|Í","i",$arraycampos[2]);
+	    	$arraycampos[2] = ereg_replace("ó|Ó","o",$arraycampos[2]);
+	    	$arraycampos[2] = ereg_replace("ú|Ú","u",$arraycampos[2]);
+
+	    	$arraycampos[3] = ereg_replace("á|Á","a",$arraycampos[3]);
+	    	$arraycampos[3] = ereg_replace("é|É","e",$arraycampos[3]);
+	    	$arraycampos[3] = ereg_replace("í|Í","i",$arraycampos[3]);
+	    	$arraycampos[3] = ereg_replace("ó|Ó","o",$arraycampos[3]);
+	    	$arraycampos[3] = ereg_replace("ú|Ú","u",$arraycampos[3]);
 	    	
 	    	if(!empty(($arraycampos[0])))
 	    		$where.="instr(puesto,\"". $arraycampos[0] ."\") and ";
@@ -170,13 +194,14 @@
 	    	if(!empty(($arraycampos[2])))
 	    		$where.="instr(nombre_firma,\"". $arraycampos[2] ."\") and ";
 	    	if(!empty(($arraycampos[3])))
+	    		//$where.="instr(area,\"". $arraycampos[3] ."\") and  ";
 	    		$where.="instr(area,\"". $arraycampos[3] ."\") and  ";
 	    	
 	    	if(!empty($where))
 	    		
 	    		//$where ="and ".substr($where,0,-4);
 
-	    	$sql="select * from datos_firmas where  ".$where." estado = 1";
+	    	$sql="select * from datos_firmas where  ".$where."   estado = 1 ";
 	    	$check = $this->sql($sql);
 	    	return $check;
 	    }

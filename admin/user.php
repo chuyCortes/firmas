@@ -119,8 +119,9 @@
 <body>
 	<div class="contenedor">
 		<head>
+		<img style="float:left;margin:10px 25px;" src="../img/logo_dti.png">
 			<div id="Menu">
-				<a href="home.php"><div class="icon-home h"></div></a>
+				<a href="home.php"><div  class="icon-home h"></div></a>
 			</div>
 		</head>
 		<main>
@@ -153,7 +154,14 @@
 			</div>	
 		</main>
 	</div>
-
+	<div style="margin: 0 auto; width: 1024px;">
+		<footer>
+			<p id="dti">DIRECCIÓN DE TECNOLOGÍAS DE INFORMACIÓN. <br /></p>
+			<p>
+				<a href="http://www.uanl.mx/">UNIVERSIDAD AUTÓNOMA DE NUEVO LEÓN</a> | 2016 <br />
+				Pedro de Alba s/n, San Nicolás de Los Garza, Nuevo León</p>
+		</footer>
+	</div>
 </body>
 </html>
 

@@ -14,6 +14,7 @@
 <body>
 	<div class="contenedor">
 		<head>
+        <img style="float:left;margin:10px 25px;" src="../img/logo_dti.png">
 			<div id="Menu">
                 <a href="home.php"><div class="icon-home h"></div><a/>
             </div>
@@ -35,11 +36,12 @@
                         $arrayCampos = "puesto:departamento:nombre_firma:area";
 
                         if(empty($area)&& empty($depa) && empty($firma) && empty($puesto)){
-                            echo "<h1 class='titulo'>No se encontro información</h1>";
+                            echo "<h1 class='titulo'>No se encontró información de la búsqueda</h1>";
                         }
                         else
                         { ?>
-                                <div class="table_home" >
+                                <div style="margin-left: 26px; margin-top: 20px;font-family: helvetica; font-size: 25px;">Resultados de la busqueda:</div>
+                                <div style="margin-top: 10px;" class="table_home" >
                                     <table>
                                         <tr>
                                             <td>
@@ -79,7 +81,14 @@
                
 		</main>
 	</div>
-
+    <div style="margin: 0 auto; width: 1024px;">
+        <footer>
+            <p id="dti">DIRECCIÓN DE TECNOLOGÍAS DE INFORMACIÓN. <br /></p>
+            <p>
+                <a href="http://www.uanl.mx/">UNIVERSIDAD AUTÓNOMA DE NUEVO LEÓN</a> | 2016 <br />
+                Pedro de Alba s/n, San Nicolás de Los Garza, Nuevo León</p>
+        </footer>
+    </div>
 </body>
 </html>
 

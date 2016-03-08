@@ -25,6 +25,8 @@
 		
 		font-family: helvetica;
 		text-align: center;
+		font-size: 16px;
+		color:  #404040;
 	}
 	.titulo{
 		
@@ -34,6 +36,14 @@
 		margin-left:280px;
 		margin-bottom:180px;
 	}
+	#instrucciones{
+		font-size: 16px;
+		color:  #404040;
+		font-family: helvetica;
+		margin-top: 80px;
+		margin-left:25px;
+	}
+
 	</style>
 </head>
 <body>
@@ -55,11 +65,8 @@
 			if(isset($_POST['Submit'])){
 				//$tar ='"'.$_POST["correo"].'"';
 				$tar =$_POST["correo"];
-				// 
-					// $prueba =$_POST["correo"];
-					// $var= $varQuery->check($prueba);
-
-				// 
+				$tar .= "@uanl.mx"; 
+			 	$tar = '"'.$tar.'"';
 			 	$var= $varQuery->traerfirma($tar);
 			 	if($var)
 			 	{
@@ -126,20 +133,33 @@
 			 	///
 			}
 			else{
-				echo "<h1>No se encontró ninguna firma</h1>";
+				echo "<h1 style='font-family:helvetica; color: #404040; margin-left:310px;margin-top:100px;'>No se encontró ninguna firma</h1>";
 			}
 			}else{
 			?>
+			<p id="instrucciones">Ingresa tu correo electrónico. Para generar tu firma.</p>
 			<div class="login">
+
 			  <form method="post" action="">
-			    <p><input type="text" name="correo" value="" placeholder="Correo Electrónico"required></p>
-			    <p class="submit"><input type="submit" name="Submit" value="Generar Firma"></p>
+			    <p ><input  style="text-align:right !important; font-size:16px !important; " id="correo" type="text" name="correo" value="" placeholder="Correo Electrónico"required></p>
+			    <label style='font-size:16px; color: #404040; font-family:helvetica;position: absolute;margin-left: 285px;margin-top: -35px;' for="correo">@uanl.mx</label>
+			    <p class="submit" style="margin-left: 35px;"><input type="submit" name="Submit" value="Generar Firma"></p>
 			  </form>
 			</div>
-			<?php }?>
+			<?php
+			 }?>
 		</main>
-	</div>
 
+	</div>
+	<div style="margin: 0 auto; width: 1024px;">
+		<footer>
+			<p id="dti">DIRECCIÓN DE TECNOLOGÍAS DE INFORMACIÓN. <br /></p>
+			<p>
+				<a href="http://www.uanl.mx/">UNIVERSIDAD AUTÓNOMA DE NUEVO LEÓN</a> | 2016 <br />
+				Pedro de Alba s/n, San Nicolás de Los Garza, Nuevo León</p>
+		</footer>
+	</div>
+	
 </body>
 </html>
 

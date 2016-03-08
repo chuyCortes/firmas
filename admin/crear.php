@@ -88,6 +88,13 @@
 			?>
 		</main>
 	</div>
-
+	<div style="margin: 0 auto; width: 1024px;">
+		<footer>
+			<p id="dti">DIRECCIÓN DE TECNOLOGÍAS DE INFORMACIÓN. <br /></p>
+			<p>
+				<a href="http://www.uanl.mx/">UNIVERSIDAD AUTÓNOMA DE NUEVO LEÓN</a> | 2016 <br />
+				Pedro de Alba s/n, San Nicolás de Los Garza, Nuevo León</p>
+		</footer>
+	</div>
 </body>
 </html>
